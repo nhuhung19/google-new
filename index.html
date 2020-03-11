@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body>
+    <section class="container jumbotron bg-light py-0">
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" style="font-size: 30px;">Breaking News</a>
+            <form class="form-inline">
+                <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" onclick="searchTitle()" type="button">Search</button>
+            </form>
+        </nav>
+
+
+        <h1 class="text-center text-danger display-4 font-weight-bold">Google News</h1>
+        <div class="row">
+            <div class="col-lg-3">
+                <div id="show-num"></div>
+                <!-- Default dropright button -->
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Dropright
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" onclick="categoryFilter('all')" type="button">All</button>
+                        <button class="dropdown-item" onclick="categoryFilter('business')" type="button">Business</button>
+                        <button class="dropdown-item" onclick="categoryFilter('general')" type="button">General</button>
+                        <button class="dropdown-item" onclick="categoryFilter('entertainment')" type="button">Entertainment</button>
+                        <button class="dropdown-item" onclick="categoryFilter('health')" type="button">Health</button>
+                        <button class="dropdown-item" onclick="categoryFilter('science')" type="button">Science</button>
+                        <button class="dropdown-item" onclick="categoryFilter('sports')" type="button">Sports</button>
+                        <button class="dropdown-item" onclick="categoryFilter('technology')" type="button">Technology</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="row" id="newArea"></div>
+            </div>
+        </div>
+        <footer class="d-flex justify-content-between">
+            <div><a href="#">Back to top</a></div>
+            <div>
+                <button onclick="loadMore()">More</button>
+            </div>
+        </footer>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="moment-with-locales.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
