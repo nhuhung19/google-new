@@ -11,6 +11,7 @@ let callAPI = async() => {
     console.log("data", data)
     console.log("json", result)
     console.log("articles list", newList)
+    searchBySource()
     render(newList)
 }
 
@@ -62,11 +63,37 @@ const searchTitle = async() => {
 let categoryList = []
 const categoryFilter = async(category) => {
     let apiKey = '615b66dd5eb64e848050e4a9780c2de3'
-        // let url = `https://newsapi.org/v2/sources?category=${category}&apiKey=${apiKey}`
     let url = `https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${apiKey}`
     let data = await fetch(url)
     let result = await data.json()
     console.log('category resultL', result)
     categoryList = result.articles
     render(categoryList)
+}
+
+const searchBySource = () => {
+    let sourcesName = newList.map((item) => item.source.name)
+
+    let sourceObject = sourcesName.reduce((total, name) => {
+        if (name in total) {
+            total[name]++
+        } else {
+            total[name] = 1
+        }
+        return total
+    }, {})
+
+    let sourceArray = Object.keys(sourceObject)
+
+    let htmlSource = sourceArray.map((item) => `<input id="${item}" type="checkbox" onchange="sourceFilter('${item}')" />${item} (${sourceObject[item]})`).join('')
+    document.getElementById('sources-name').innerHTML = htmlSource
+}
+
+const sourceFilter = (index) => {
+    if (document.getElementById(index).checked == true) {
+        let filterSources = newList.filter((item) => item.source.name === index)
+        render(filterSources)
+    } else {
+        render(newList)
+    }
 }
